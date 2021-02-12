@@ -10,7 +10,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="assets/boot.css" rel="stylesheet" type="text/css"/>
     <link href="assets/style.css" rel="stylesheet" type="text/css"/>
     <title>Cadastro de Doadores</title>
 </head>
@@ -26,46 +25,60 @@
     ?>
     <!-/div//->
 
-<form method="POST" action="register.php" enctype="multipart/form-data">
+<form method="POST" action="register.php" id="form-contact" enctype="multipart/form-data">
     <table> 
         <tr>
-            <td><label>Nome</label></td>
-            <td><input type="text" aria-label="First name" name="name"></td>
+            <td><label>Nome Completo</label></td>
+            <td><input type="text" name="name" id="name" required></td>
         </tr>
         <tr>
             <td><label>E-mail</label></td>
-            <td><input type="e-mail" aria-label="Last name" name="email"></td>
+            <td><input type="email" name="email" required></td>
         </tr>
         <tr>
             <td><label>CPF</label></td>
-            <td><input type="text" class="cpf" name="cpf"></td>
+            <td><input type="text" class="cpf" name="cpf" required></td>
         </tr>
         <tr>
             <td><label>Telefone</label></td>
-            <td><input type="tel" pattern=".{11,}" title="DDD+9números" name="phone"></td>
+            <td><input type="tel" name="phone" class="phone" required></td>
         </tr>
         <tr>
             <td><label>Data de nascimento</label></td>
-            <td><input type="date" name="birth_date"></td>
+            <td><input type="date" name="birth_date" required></td>
         </tr>
         <tr>
             <td><label>Endereço</label></td>
-            <td><input type="text" aria-label="First name" name="address"></td>
+            <td><input type="text" name="address" required></td>
         </tr>
         <tr>
             <td><label>Intervalo de doação</label></td>
-            <td><input type="text" aria-label="First name" name="donation_interval"></td>
+            <td>
+                <select name="donation_interval" required>
+                <option value=""></option>
+                    <option value="Único">Único</option>
+                    <option value="Bimestral">Bimestral</option>
+                    <option value="Semestral">Semestral</option>
+                    <option value="Anual">Anual</option> 
+                </select>
+            </td>
         </tr>
         <tr>
             <td><label>Valor da doação</label></td>
-            <td><input type="text" aria-label="First name" name="donation_amount"></td>
+            <td><input type="number" name="donation_amount" required></td>
         </tr>
         <tr>
             <td><label>Forma de pagamento</label></td>
-            <td><input type="text" aria-label="First name" name="form_of_payment"></td>
+            <td>
+                <select name="form_of_payment" required>
+                    <option value=""></option>
+                    <option value="Débito">Débito</option>
+                    <option value="Crédito">Crédito</option>
+                </select>
+            </td>
         </tr>
     </table>
-        <button type="submit" onclick="valida_form ()">Cadastrar</button>    
+        <button type="submit">Cadastrar</button>    
     </form>
 
     <table>
@@ -89,7 +102,7 @@
             <td><?= $tr["email"] ?></td>
             <td><?= $tr["cpf"] ?></td>
             <td><?= $tr["phone"] ?></td>
-            <td><?= $tr["birth_date"] ?></td>
+            <td><?= date("d/m/Y", strtotime($tr["birth_date"])) ?></td>
             <td><?= $tr["address"] ?></td>
             <td><?= date("d/m/Y", strtotime($tr["registration_date"])) ?></td>
             <td><?= $tr["donation_interval"]?></td>
@@ -102,11 +115,12 @@
         <?php endforeach ;?>
         </table>
         
-    <script type="text/javascript" src="assets/script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" 
+    integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" 
     crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/
-    27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="assets/script.js"></script>
     
 </body>
 </html>
