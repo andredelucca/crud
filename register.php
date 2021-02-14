@@ -4,10 +4,6 @@ include_once "connection.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $data = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRIPPED);
-    //DEBUG
-    //var_dump($data);
-
-    //CRIAR AS VALIDAÇÕES DE CAMPOS VAZIOS E TUDO MAIS
     $sql = "INSERT INTO register VALUES(DEFAULT, :name, :email, :cpf, :phone, :birth_date, :address, 
     NOW(), :donation_interval, :donation_amount, :form_of_payment)";
     $res = $conn->prepare($sql);
@@ -22,17 +18,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $res->bindValue("form_of_payment", $data["form_of_payment"], PDO::PARAM_STR);
     $res->execute();
 
-    //DEBUG
-    #$res->debugDumpParams();
-
-    if($res->rowCount()>0)
-    {
-        //$_SESSION["msg"] = "Cadastrado com sucesso";
-        $_SESSION["msg"] = "<div class='alert alert-success alert-dismissible fade show text-center' role='alert'>
-  <strong>Cliente cadastrado com sucesso</strong>
-  <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-</div>";
-        var_dump($_SESSION["msg"]);
+    if($res->rowCount()>0){
+    $_SESSION["msg"] = "<div class='alert alert-success alert-dismissible fade show text-center' role='alert'>
+    <strong>Cliente cadastrado com sucesso</strong>
+    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>";
         header("Location: index.php");
     }
 }

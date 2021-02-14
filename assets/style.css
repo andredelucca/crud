@@ -1,0 +1,51 @@
+h1 {
+    text-align: center;
+    padding-top: 1%;
+}
+.container {
+    border: 3px solid;
+    border-radius: 5px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-top: 1%;
+    background-color: burlywood;
+}
+
+.container .row {
+    padding-left: 13%;
+}
+
+.container .row .col-form-label {
+    text-align: right;
+}
+
+.container .btn-primary{
+    margin-left: 50%;
+    margin-right: 50%;
+}
+
+.table-responsive {
+    margin: 1%;
+}
+
+.table {
+    vertical-align: middle;
+    font-size: 10px;
+}
+
+h2 {
+    text-align: center;
+    padding-top: 2%;
+}
+
+.bi-pen {
+    color: blue;
+}
+
+.bi-trash {
+    color: red;
+}
+
+.error {
+    color: red;
+} 

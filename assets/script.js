@@ -1,7 +1,8 @@
 //máscara
 $(document).ready(function(){
     $('.cpf').mask('000.000.000-00');
-    $('.phone').mask('00 00000000');
+    $('.phone').mask('00 000000000');
+    $('.donation_amount').mask('###.##0,00', {reverse:true});
   });
 
 //validação dos campos
@@ -59,8 +60,8 @@ $().ready(function(){
           },
           phone:{
             required:"Por favor, informe seu telefone",
-            minlength:"O telefone são 8 ou 9 números",
-            phone:"o telefone são 8 ou 9 números"
+            minlength:"O telefone são 8 ou 9 números. Não esqueça do DDD",
+            phone:"o telefone são 8 ou 9 números. Não esqueça do DDD"
           },
           birth_date:{
             required:"Por favor, informe sua data de nascimento"
